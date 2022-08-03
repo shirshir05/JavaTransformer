@@ -21,9 +21,11 @@ public class Main {
          */
 
         // TODO: move the file from the cluster (in WriteFileCommit -> Files -> Name projects) to remote desktop (test_file_for_transformation)
-        String nameProject = "tika";
+//        String nameProject = "tika";
 
         String numberFold =  args[0];
+        String nameProject =  args[1];
+
         System.out.println(numberFold);
         String inpPath = "C:\\Users\\shir0\\test_file_for_transformation\\" + nameProject + "\\" + numberFold + "\\";
         String outPath = "C:\\Users\\shir0\\transformation\\" + nameProject + "\\" + numberFold + "\\transforms";
