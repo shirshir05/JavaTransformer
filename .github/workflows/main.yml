@@ -45,7 +45,7 @@ jobs:
     - name: Checkout javadiff
       uses: actions/checkout@v2
       with:
-        repository: shir0/javadiff_transformation
+        repository: shirshir05/javadiff_transformation
         path: ./javadiff
         fetch-depth: 0
 #         ref: f41c3b142333296ccaffe6b9d3f8f569879811f6
