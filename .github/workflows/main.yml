@@ -3,17 +3,29 @@
 
 name: Maven Package
 
+# on:
+#   release:
+#     types: [created]
 on:
-  release:
-    types: [created]
+  issues:
+    types: [opened]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    continue-on-error: true
+    runs-on: windows-latest
+#     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+          commit_ind: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+    #        commit_ind: [17, 22, 77]
+    # Steps represent a sequence of tasks that will be executed as part of the job
 
     steps:
     - uses: actions/checkout@v3
@@ -24,11 +36,39 @@ jobs:
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
+        
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+      
+    - name: Checkout javadiff
+      uses: actions/checkout@v2
+      with:
+        repository: shir0/javadiff_transformation
+        path: ./javadiff
+        fetch-depth: 0
+#         ref: f41c3b142333296ccaffe6b9d3f8f569879811f6
+    - name: javadiff_install
+      run: python ./javadiff/setup.py install
+          
+          
+    - name: Checkout tools repo
+      continue-on-error: true
+      uses: actions/checkout@v2
+      with:
+        repository: ${{github.event.issue.title}}
+        path: ./local_repo
+        fetch-depth: 0
+        
+    - name: execute
+      run: java src/main/java/main.py 1
 
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
 
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+#     - name: Build with Maven
+#       run: mvn -B package --file pom.xml
+
+#     - name: Publish to GitHub Packages Apache Maven
+#       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+#       env:
+#         GITHUB_TOKEN: ${{ github.token }}
