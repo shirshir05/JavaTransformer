@@ -87,12 +87,12 @@
             <version>1.3.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>io.github.java-diff-utils</groupId>
-            <artifactId>java-diff-utils-parent</artifactId>
-            <version>4.11</version>
-            <scope>compile</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.github.java-diff-utils</groupId>-->
+<!--            <artifactId>java-diff-utils-parent</artifactId>-->
+<!--            <version>4.11</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
     </dependencies>
 
 

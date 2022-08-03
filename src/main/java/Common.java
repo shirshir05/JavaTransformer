@@ -124,23 +124,16 @@ public final class Common {
 
     static private void GetFeatureJavaDiff(String pathBefore, String pathAfter){
         String NameDir = Common.mSavePath.substring(Common.mSavePath.substring(0,Common.mSavePath.length()-1).lastIndexOf("\\")).replace("\\", "");
-        String ansJavaDiff = "C:\\Users\\shir0\\ans_from_java_diff_transformation\\" + Common.mNameProject  + "\\" + mNameFold+ "\\" + NameDir + "\\"; ;
+        String ansJavaDiff = ".\\ans_from_java_diff_transformation\\" + Common.mNameProject  + "\\" + mNameFold+ "\\" + NameDir + "\\"; ;
+//        String ansJavaDiff = "C:\\Users\\shir0\\ans_from_java_diff_transformation\\" + Common.mNameProject  + "\\" + mNameFold+ "\\" + NameDir + "\\"; ;
+
         File ansJavaDiffFile = new File(ansJavaDiff);
         if (ansJavaDiffFile.exists() || ansJavaDiffFile.mkdirs()) {
-//            String[] splitNameFile = pathAfter.substring(pathAfter.substring(0,pathAfter.length()-1).lastIndexOf("\\")+1).split("_");
-//            String IDCommit=  splitNameFile[0] + "_" + splitNameFile[2] + "_" +  splitNameFile[3];
-////            _, nameProject, numberFold, nameTransform, commit_sha, first_commit, second_commit = sys.argv
-//            String command = "C:\\\\Users\\\\shir0\\\\Anaconda3\\\\python.exe C:\\Users\\shir0\\javadiff\\javadiff\\main.py " + Common.mNameProject +
-//                    " " + mNameFold + " " + NameDir + " " + IDCommit + " " + pathBefore + " " + pathAfter;
-//            try {
-//                Process p = Runtime.getRuntime().exec(command);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
 
             String[] splitNameFile = pathAfter.substring(pathAfter.substring(0,pathAfter.length()-1).lastIndexOf("\\")+1).split("_");
             String IDCommit=  splitNameFile[0] + "_" + splitNameFile[2] + "_" +  splitNameFile[3];
-            String command = "C:\\\\Users\\\\shir0\\\\Anaconda3\\\\python.exe C:\\Users\\shir0\\javadiff\\javadiff\\main.py " + Common.mNameProject +
+//            String command = "C:\\\\Users\\\\shir0\\\\Anaconda3\\\\python.exe C:\\Users\\shir0\\javadiff\\javadiff\\main.py " + Common.mNameProject +
+            String command = "python.exe .\\javadiff\\javadiff\\main.py " + Common.mNameProject +
                     " " + mNameFold + " " + NameDir + " " + IDCommit + " " + pathBefore + " " + pathAfter;
             try {
 
@@ -148,14 +141,14 @@ public final class Common {
                 BufferedReader stdInput = new BufferedReader(new
                         InputStreamReader(p.getInputStream()));
                 stdInput.readLine();
-
+//
 //                BufferedReader stdError = new BufferedReader(new
 //                        InputStreamReader(p.getErrorStream()));
-//                String s = null;
-//
-//                while ((s = stdInput.readLine()) != null) {
-////                    System.out.println(s);
-//                }
+                String s = null;
+
+                while ((s = stdInput.readLine()) != null) {
+//                    System.out.println(s);
+                }
 //
 //                while ((s = stdError.readLine()) != null) {
 ////                    System.out.println(s);
@@ -191,7 +184,9 @@ public final class Common {
 
             String NameDir = Common.mSavePath.substring(Common.mSavePath.substring(0,Common.mSavePath.length()-1).lastIndexOf("\\")).replace("\\", "");
 //            String PathDir = mRootInputPath + "\\..\\..\\..\\Transformations\\" + Common.mNameProject  + "\\" + mNameFold+ "\\" + NameDir + "\\";
-            String PathDir = "C:\\Users\\shir0\\diff_after_transformation\\" + Common.mNameProject  + "\\" + mNameFold+ "\\" + NameDir + "\\"; ;
+            String PathDir = ".\\diff_after_transformation\\" + Common.mNameProject  + "\\" + mNameFold+ "\\" + NameDir + "\\";
+//            String PathDir = "C:\\Users\\shir0\\diff_after_transformation\\" + Common.mNameProject  + "\\" + mNameFold+ "\\" + NameDir + "\\"; ;
+
             File FileDir =  new File(PathDir);
             if (FileDir.exists() || FileDir.mkdirs()) {
                 FileWriter writer = new FileWriter(PathDir + "\\transform.csv",true);

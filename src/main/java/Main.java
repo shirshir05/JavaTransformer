@@ -27,15 +27,20 @@ public class Main {
         String nameProject =  args[1];
 
         System.out.println(numberFold);
-        String inpPath = "C:\\Users\\shir0\\test_file_for_transformation\\" + nameProject + "\\" + numberFold + "\\";
-        String outPath = "C:\\Users\\shir0\\transformation\\" + nameProject + "\\" + numberFold + "\\transforms";
+//        String inpPath = "C:\\Users\\shir0\\test_file_for_transformation\\" + nameProject + "\\" + numberFold + "\\";
+//        String outPath = "C:\\Users\\shir0\\transformation\\" + nameProject + "\\" + numberFold + "\\transforms";
+
+        String inpPath = ".\\test_file_for_transformation\\" + nameProject + "\\" + numberFold + "\\";
+        String outPath = ".\\transformation\\" + nameProject + "\\" + numberFold + "\\transforms";
 
         File theDir = new File(outPath);
         if (!theDir.exists()){
             theDir.mkdirs();
         }
 
-        String ansJavaDiff = "C:\\Users\\shir0\\ans_from_java_diff_transformation" + "\\" + nameProject + "\\" + numberFold + "\\";
+//        String ansJavaDiff = "C:\\Users\\shir0\\ans_from_java_diff_transformation" + "\\" + nameProject + "\\" + numberFold + "\\";
+        String ansJavaDiff = ".\\ans_from_java_diff_transformation" + "\\" + nameProject + "\\" + numberFold + "\\";
+
         File ansJavaDiffFile = new File(ansJavaDiff);
         if (!ansJavaDiffFile.exists()){
             ansJavaDiffFile.mkdirs();
