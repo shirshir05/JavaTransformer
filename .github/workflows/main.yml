@@ -62,7 +62,7 @@ jobs:
         fetch-depth: 0
         
     - name: execute
-      run: java src/main/java/main.py ${{ matrix.commit_ind }} ${{github.event.issue.title}}
+      run: java src/main/java/Main.java ${{ matrix.commit_ind }} ${{github.event.issue.title}}
 
 
 #     - name: Build with Maven
