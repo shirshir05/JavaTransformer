@@ -69,8 +69,8 @@ jobs:
         fetch-depth: 0
       
 
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+#     - name: Build with Maven
+#       run: mvn -B package --file pom.xml
     - name: execute
       run: java src/main/java/Main.java ${{ matrix.commit_ind }} ${{github.event.issue.title}}
 
